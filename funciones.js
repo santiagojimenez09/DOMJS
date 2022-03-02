@@ -90,11 +90,13 @@ document.addEventListener("DOMContentLoaded", function(){
       let todasLasImg = document.querySelectorAll("img");
       let opcion1 = imgElegidaID[0];
       let opcion2 = imgElegidaID[1];
-      if(imgElegida[0] === imgElegida[1]){
+      if(imgElegida[0] === imgElegida[1] && opcion1 != opcion2){
         alert("Acertaste");
         todasLasImg[opcion1].setAttribute("src","imagenes/aciertos.jpg");
         todasLasImg[opcion2].setAttribute("src","imagenes/aciertos.jpg");
         conteo.push(imgElegida);
+        todasLasImg[opcion1].removeEventListener("click",descubrirImagen);
+        todasLasImg[opcion2].removeEventListener("click",descubrirImagen);
       }else{
         alert("Sigue Intentando");
         todasLasImg[opcion1].setAttribute("src","imagenes/Pregunta.jpg");
@@ -107,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       if(conteo.length === 6){
         aciertos.textContent = "Ganaste";
+        location.reload();
       }
     }
 
